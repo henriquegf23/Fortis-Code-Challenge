@@ -1,0 +1,221 @@
+[
+  {
+    "ContainingType": "five_cards_poker.Controllers.PokerController",
+    "Method": "Get",
+    "RelativePath": "Poker",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "numOfPlayers",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "shuffleSeed",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "five_cards_poker.Models.Table",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ],
+    "EndpointName": "GetPlayPoker"
+  },
+  {
+    "ContainingType": "five_cards_poker.Controllers.PokerActionsController",
+    "Method": "GetHand",
+    "RelativePath": "PokerActions/GetHand",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "numOfPlayers",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "shuffleSeed",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[System.Collections.Generic.List\u00601[[five_cards_poker.Models.Card, five_cards_poker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "five_cards_poker.Controllers.PokerActionsController",
+    "Method": "EvaluateHandAndTranslateScore",
+    "RelativePath": "PokerActions/PostEvaluateHandAndTranslateScore",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "hand",
+        "Type": "System.Collections.Generic.List\u00601[[five_cards_poker.Models.Card, five_cards_poker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "five_cards_poker.Models.DTOs.PlayerDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "five_cards_poker.Controllers.PokerActionsController",
+    "Method": "EvaluateMultiHandsAndTranslateScore",
+    "RelativePath": "PokerActions/PostEvaluateMultiHandAndTranslateScore",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "hand",
+        "Type": "System.Collections.Generic.List\u00601[[System.Collections.Generic.List\u00601[[five_cards_poker.Models.Card, five_cards_poker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[five_cards_poker.Models.DTOs.PlayerDTO, five_cards_poker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "five_cards_poker.Controllers.PokerActionsController",
+    "Method": "ReturnTableResultFromHand",
+    "RelativePath": "PokerActions/PostTableResultFromHand",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "hands",
+        "Type": "System.Collections.Generic.List\u00601[[System.Collections.Generic.List\u00601[[five_cards_poker.Models.Card, five_cards_poker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "five_cards_poker.Models.Table",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "five_cards_poker.Controllers.PokerActionsController",
+    "Method": "ReturnTableResultFromPlayersDTO",
+    "RelativePath": "PokerActions/PostTableResultFromPlayersDTO",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "players",
+        "Type": "System.Collections.Generic.List\u00601[[five_cards_poker.Models.DTOs.PlayerDTO, five_cards_poker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "five_cards_poker.Models.Table",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "five_cards_poker.Controllers.PokerActionsController",
+    "Method": "ValidateHand",
+    "RelativePath": "PokerActions/PostValidateHand",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "hand",
+        "Type": "System.Collections.Generic.List\u00601[[five_cards_poker.Models.Card, five_cards_poker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "five_cards_poker.Models.ValidHand",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "five_cards_poker.Controllers.PokerActionsController",
+    "Method": "ValidateMultipleHands",
+    "RelativePath": "PokerActions/PostValidateMultipleHands",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "hands",
+        "Type": "System.Collections.Generic.List\u00601[[System.Collections.Generic.List\u00601[[five_cards_poker.Models.Card, five_cards_poker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "five_cards_poker.Models.ValidHand",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  }
+]

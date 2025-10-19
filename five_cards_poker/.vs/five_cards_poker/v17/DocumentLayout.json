@@ -1,0 +1,88 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\T-Gamer\\OneDrive\\Documentos\\GitHub\\Fortis-Code-Challenge\\five_cards_poker\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{8984D31A-0428-4726-A3FB-7E95B20D24E5}|five_cards_poker\\five_cards_poker.csproj|c:\\users\\t-gamer\\onedrive\\documentos\\github\\fortis-code-challenge\\five_cards_poker\\five_cards_poker\\services\\pokerservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8984D31A-0428-4726-A3FB-7E95B20D24E5}|five_cards_poker\\five_cards_poker.csproj|solutionrelative:five_cards_poker\\services\\pokerservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8984D31A-0428-4726-A3FB-7E95B20D24E5}|five_cards_poker\\five_cards_poker.csproj|c:\\users\\t-gamer\\onedrive\\documentos\\github\\fortis-code-challenge\\five_cards_poker\\five_cards_poker\\controllers\\pokercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8984D31A-0428-4726-A3FB-7E95B20D24E5}|five_cards_poker\\five_cards_poker.csproj|solutionrelative:five_cards_poker\\controllers\\pokercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8984D31A-0428-4726-A3FB-7E95B20D24E5}|five_cards_poker\\five_cards_poker.csproj|c:\\users\\t-gamer\\onedrive\\documentos\\github\\fortis-code-challenge\\five_cards_poker\\five_cards_poker\\services\\pokeractionsservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8984D31A-0428-4726-A3FB-7E95B20D24E5}|five_cards_poker\\five_cards_poker.csproj|solutionrelative:five_cards_poker\\services\\pokeractionsservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8984D31A-0428-4726-A3FB-7E95B20D24E5}|five_cards_poker\\five_cards_poker.csproj|c:\\users\\t-gamer\\onedrive\\documentos\\github\\fortis-code-challenge\\five_cards_poker\\five_cards_poker\\controllers\\pokeractionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8984D31A-0428-4726-A3FB-7E95B20D24E5}|five_cards_poker\\five_cards_poker.csproj|solutionrelative:five_cards_poker\\controllers\\pokeractionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PokerServices.cs",
+              "DocumentMoniker": "C:\\Users\\T-Gamer\\OneDrive\\Documentos\\GitHub\\Fortis-Code-Challenge\\five_cards_poker\\five_cards_poker\\Services\\PokerServices.cs",
+              "RelativeDocumentMoniker": "five_cards_poker\\Services\\PokerServices.cs",
+              "ToolTip": "C:\\Users\\T-Gamer\\OneDrive\\Documentos\\GitHub\\Fortis-Code-Challenge\\five_cards_poker\\five_cards_poker\\Services\\PokerServices.cs",
+              "RelativeToolTip": "five_cards_poker\\Services\\PokerServices.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAQwBwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-19T19:40:09.048Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PokerActionsServices.cs",
+              "DocumentMoniker": "C:\\Users\\T-Gamer\\OneDrive\\Documentos\\GitHub\\Fortis-Code-Challenge\\five_cards_poker\\five_cards_poker\\Services\\PokerActionsServices.cs",
+              "RelativeDocumentMoniker": "five_cards_poker\\Services\\PokerActionsServices.cs",
+              "ToolTip": "C:\\Users\\T-Gamer\\OneDrive\\Documentos\\GitHub\\Fortis-Code-Challenge\\five_cards_poker\\five_cards_poker\\Services\\PokerActionsServices.cs",
+              "RelativeToolTip": "five_cards_poker\\Services\\PokerActionsServices.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAowA0AAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-19T18:00:08.672Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PokerActionsController.cs",
+              "DocumentMoniker": "C:\\Users\\T-Gamer\\OneDrive\\Documentos\\GitHub\\Fortis-Code-Challenge\\five_cards_poker\\five_cards_poker\\Controllers\\PokerActionsController.cs",
+              "RelativeDocumentMoniker": "five_cards_poker\\Controllers\\PokerActionsController.cs",
+              "ToolTip": "C:\\Users\\T-Gamer\\OneDrive\\Documentos\\GitHub\\Fortis-Code-Challenge\\five_cards_poker\\five_cards_poker\\Controllers\\PokerActionsController.cs",
+              "RelativeToolTip": "five_cards_poker\\Controllers\\PokerActionsController.cs",
+              "ViewState": "AgIAAJsAAAAAAAAAAAAuwEoAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-18T16:37:15.022Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PokerController.cs",
+              "DocumentMoniker": "C:\\Users\\T-Gamer\\OneDrive\\Documentos\\GitHub\\Fortis-Code-Challenge\\five_cards_poker\\five_cards_poker\\Controllers\\PokerController.cs",
+              "RelativeDocumentMoniker": "five_cards_poker\\Controllers\\PokerController.cs",
+              "ToolTip": "C:\\Users\\T-Gamer\\OneDrive\\Documentos\\GitHub\\Fortis-Code-Challenge\\five_cards_poker\\five_cards_poker\\Controllers\\PokerController.cs",
+              "RelativeToolTip": "five_cards_poker\\Controllers\\PokerController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-18T23:12:19.86Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

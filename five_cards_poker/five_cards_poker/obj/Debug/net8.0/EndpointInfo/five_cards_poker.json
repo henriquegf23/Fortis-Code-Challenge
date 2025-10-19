@@ -1,0 +1,637 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Fortis Code Challenge",
+    "version": "v1"
+  },
+  "paths": {
+    "/Poker": {
+      "get": {
+        "tags": [
+          "Poker"
+        ],
+        "summary": "Simulates a round of poker",
+        "description": "This endpoint is responsible for generating a full round of poker using the number of players specified by the caller, with a minimum of 1 and a maximum of 10 players.\r\nThe \"shuffleSeed\" parameter is used to shuffle the deck. If blank, the seed is generated automatically. This parameter can be used to reproduce the same game for debugging purposes.\r\n\r\nThis implementation does not necessarily use all the \"action endpoints\" to generate a game because, since all parameters are controlled internally, it reduces potential bugs from user input and sometimes uses fewer loops to process information.",
+        "operationId": "GetPlayPoker",
+        "parameters": [
+          {
+            "name": "numOfPlayers",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "shuffleSeed",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Table"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Table"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Table"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/PokerActions/GetHand": {
+      "get": {
+        "tags": [
+          "PokerActions"
+        ],
+        "summary": "Generates poker hands",
+        "description": "This endpoint is responsible for generating N 5-card poker hands for up to 10 players.\r\nThe \"shuffleSeed\" parameter is used to shuffle the deck. If blank, the seed is generated automatically. This parameter can be used to reproduce the same game for debugging purposes.\r\n\r\nThe response of this call will be a list of lists of cards. Each card has the following attributes: Value (numeric value), Name (rank), AlternativeValue (used for Aces in lower sequences), and Suit.",
+        "parameters": [
+          {
+            "name": "numOfPlayers",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "shuffleSeed",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Card"
+                    }
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Card"
+                    }
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Card"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/PokerActions/PostValidateHand": {
+      "post": {
+        "tags": [
+          "PokerActions"
+        ],
+        "summary": "Validates a poker hand",
+        "description": "Verifies if all 5 cards are valid in a standard 52-card deck poker game.\r\nThe endpoint will return a structure with an IsValid boolean field and a message.\r\n\r\nValidations: More or less than 5 cards, invalid suit, invalid rank (2-14, where 14 represents Ace), and duplicate cards (same rank and suit).",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Card"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Card"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Card"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidHand"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidHand"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidHand"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/PokerActions/PostValidateMultipleHands": {
+      "post": {
+        "tags": [
+          "PokerActions"
+        ],
+        "summary": "Validates multiple poker hands",
+        "description": "Verifies if all 5-card hands for multiple players are valid in a standard 52-card deck poker game.\r\nThe endpoint will return a structure with an IsValid boolean field and a message.\r\n\r\nValidations: More or less than 5 cards in each player's hand, invalid suit, invalid rank (2-14, where 14 represents Ace), and duplicate cards (same rank and suit across all players).",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Card"
+                  }
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Card"
+                  }
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Card"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidHand"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidHand"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidHand"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/PokerActions/PostEvaluateHandAndTranslateScore": {
+      "post": {
+        "tags": [
+          "PokerActions"
+        ],
+        "summary": "Evaluates and translates the poker score of a hand",
+        "description": "Validates and evaluates the score of a poker hand.\r\n\r\nThe endpoint will return a PlayerDTO structure containing an identifier (irrelevant for a single player), a simplified version of the player's cards, and the hand score along with tiebreaker information.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Card"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Card"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Card"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlayerDTO"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlayerDTO"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlayerDTO"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/PokerActions/PostEvaluateMultiHandAndTranslateScore": {
+      "post": {
+        "tags": [
+          "PokerActions"
+        ],
+        "summary": "Evaluates and translates the poker scores of multiple hands",
+        "description": "Validates and evaluates the scores of multiple poker hands.\r\n\r\nThe endpoint will return a list of PlayerDTO structures, each containing an identifier, a simplified version of the player's cards, and the hand score along with tiebreaker information.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Card"
+                  }
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Card"
+                  }
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Card"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PlayerDTO"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PlayerDTO"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PlayerDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/PokerActions/PostTableResultFromPlayersDTO": {
+      "post": {
+        "tags": [
+          "PokerActions"
+        ],
+        "summary": "Analyzes and determines the winner (or draw) of a poker round from a list of players",
+        "description": "This endpoint receives a list of PlayerDTO objects. It compares all hands and determines a winner or draw for the round.\r\n\r\nThe return structure will be a Table object containing the list of players, the list of winners (more than one in case of a draw), and the winning score for that round.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/PlayerDTO"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/PlayerDTO"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/PlayerDTO"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Table"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Table"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Table"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/PokerActions/PostTableResultFromHand": {
+      "post": {
+        "tags": [
+          "PokerActions"
+        ],
+        "summary": "Analyzes and determines the winner (or draw) of a poker round from a list of cards",
+        "description": "This endpoint receives a list of cards (generated from the endpoint GetHand). It compares all hands and determines a winner or draw for the round.\r\n\r\nThe return structure will be a Table object containing the list of players, the list of winners (more than one in case of a draw), and the winning score for that round.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Card"
+                  }
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Card"
+                  }
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Card"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Table"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Table"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Table"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Card": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "alternativeValue": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "suit": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CardDTO": {
+        "type": "object",
+        "properties": {
+          "rank": {
+            "type": "string",
+            "nullable": true
+          },
+          "suit": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PlayerDTO": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "hand": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CardDTO"
+            },
+            "nullable": true
+          },
+          "score": {
+            "$ref": "#/components/schemas/Score"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Score": {
+        "type": "object",
+        "properties": {
+          "rank": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "tiebreaker": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Table": {
+        "type": "object",
+        "properties": {
+          "players": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PlayerDTO"
+            },
+            "nullable": true
+          },
+          "winners": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PlayerDTO"
+            },
+            "nullable": true
+          },
+          "finalResult": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ValidHand": {
+        "type": "object",
+        "properties": {
+          "isValid": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}

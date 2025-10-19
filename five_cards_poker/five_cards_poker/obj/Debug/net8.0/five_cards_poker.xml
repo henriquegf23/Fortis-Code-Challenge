@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>five_cards_poker</name>
+    </assembly>
+    <members>
+        <member name="M:five_cards_poker.Controllers.PokerActionsController.GetHand(System.Int32,System.Nullable{System.Int32})">
+            <summary>
+            Generates poker hands
+            </summary>
+            <remarks>
+            This endpoint is responsible for generating N 5-card poker hands for up to 10 players.
+            The "shuffleSeed" parameter is used to shuffle the deck. If blank, the seed is generated automatically. This parameter can be used to reproduce the same game for debugging purposes.
+            
+            The response of this call will be a list of lists of cards. Each card has the following attributes: Value (numeric value), Name (rank), AlternativeValue (used for Aces in lower sequences), and Suit.
+            </remarks>
+        </member>
+        <member name="M:five_cards_poker.Controllers.PokerActionsController.ValidateHand(System.Collections.Generic.List{five_cards_poker.Models.Card})">
+            <summary>
+            Validates a poker hand
+            </summary>
+            <remarks>
+            Verifies if all 5 cards are valid in a standard 52-card deck poker game.
+            The endpoint will return a structure with an IsValid boolean field and a message.
+            
+            Validations: More or less than 5 cards, invalid suit, invalid rank (2-14, where 14 represents Ace), and duplicate cards (same rank and suit).
+            </remarks>
+        </member>
+        <member name="M:five_cards_poker.Controllers.PokerActionsController.ValidateMultipleHands(System.Collections.Generic.List{System.Collections.Generic.List{five_cards_poker.Models.Card}})">
+            <summary>
+            Validates multiple poker hands
+            </summary>
+            <remarks>
+            Verifies if all 5-card hands for multiple players are valid in a standard 52-card deck poker game.
+            The endpoint will return a structure with an IsValid boolean field and a message.
+            
+            Validations: More or less than 5 cards in each player's hand, invalid suit, invalid rank (2-14, where 14 represents Ace), and duplicate cards (same rank and suit across all players).
+            </remarks>
+        </member>
+        <member name="M:five_cards_poker.Controllers.PokerActionsController.EvaluateHandAndTranslateScore(System.Collections.Generic.List{five_cards_poker.Models.Card})">
+            <summary>
+            Evaluates and translates the poker score of a hand
+            </summary>
+            <remarks>
+            Validates and evaluates the score of a poker hand.
+            
+            The endpoint will return a PlayerDTO structure containing an identifier (irrelevant for a single player), a simplified version of the player's cards, and the hand score along with tiebreaker information.
+            </remarks>
+        </member>
+        <member name="M:five_cards_poker.Controllers.PokerActionsController.EvaluateMultiHandsAndTranslateScore(System.Collections.Generic.List{System.Collections.Generic.List{five_cards_poker.Models.Card}})">
+            <summary>
+            Evaluates and translates the poker scores of multiple hands
+            </summary>
+            <remarks>
+            Validates and evaluates the scores of multiple poker hands.
+            
+            The endpoint will return a list of PlayerDTO structures, each containing an identifier, a simplified version of the player's cards, and the hand score along with tiebreaker information.
+            </remarks>
+        </member>
+        <member name="M:five_cards_poker.Controllers.PokerActionsController.ReturnTableResultFromPlayersDTO(System.Collections.Generic.List{five_cards_poker.Models.DTOs.PlayerDTO})">
+            <summary>
+            Analyzes and determines the winner (or draw) of a poker round from a list of players
+            </summary>
+            <remarks>
+            This endpoint receives a list of PlayerDTO objects. It compares all hands and determines a winner or draw for the round.
+            
+            The return structure will be a Table object containing the list of players, the list of winners (more than one in case of a draw), and the winning score for that round.
+            </remarks>
+        </member>
+        <member name="M:five_cards_poker.Controllers.PokerActionsController.ReturnTableResultFromHand(System.Collections.Generic.List{System.Collections.Generic.List{five_cards_poker.Models.Card}})">
+            <summary>
+            Analyzes and determines the winner (or draw) of a poker round from a list of cards
+            </summary>
+            <remarks>
+            This endpoint receives a list of cards (generated from the endpoint GetHand). It compares all hands and determines a winner or draw for the round.
+            
+            The return structure will be a Table object containing the list of players, the list of winners (more than one in case of a draw), and the winning score for that round.
+            </remarks>
+        </member>
+        <member name="M:five_cards_poker.Controllers.PokerController.Get(System.Int32,System.Nullable{System.Int32})">
+            <summary>
+            Simulates a round of poker
+            </summary>
+            <remarks>
+            This endpoint is responsible for generating a full round of poker using the number of players specified by the caller, with a minimum of 1 and a maximum of 10 players.
+            The "shuffleSeed" parameter is used to shuffle the deck. If blank, the seed is generated automatically. This parameter can be used to reproduce the same game for debugging purposes.
+            
+            This implementation does not necessarily use all the "action endpoints" to generate a game because, since all parameters are controlled internally, it reduces potential bugs from user input and sometimes uses fewer loops to process information.
+            </remarks>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,6 @@
+@five_cards_poker_HostAddress = http://localhost:5094
+
+GET {{five_cards_poker_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
